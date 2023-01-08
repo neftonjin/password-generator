@@ -93,40 +93,42 @@ var upperCasedCharacters = [
 ];
 
 
-let passLength = "10"; 
-let sCharacters ;
-let lCharacters ;
-let uCharacters ;
-let nCharacters ;
+let passLength = "10";   // // This variable is storing the user input choice for the password length. 
+let sCharacters ;        // This variable is storing the user input  choice as true or false for the special characters.  
+let lCharacters ;        // This variable is storing the user input  choice as true or false for the lowerCase characters. 
+let uCharacters ;        // This variable is storing the user input  choice as true or false for the upperCase  characters. 
+let nCharacters ;        // This variable is storing the user input  choice as true or false for the numerical  characters. 
 
 // Function to prompt user for password options
 function getPasswordOptions() {
-  const regex = /^(1[0-9]|[2-5][0-9]|6[0-4])$/;
+  const regex = /^(1[0-9]|[2-5][0-9]|6[0-4])$/; //This regular expression is matching all the numbers between 10 an 64 included 
         passLength = prompt("Please choose  between 10 and 64");
-        while (passLength !== NaN && regex.test(passLength) !== true) {
+        while (passLength !== NaN && regex.test(passLength) !== true) {   
           if (passLength === null) {
             passLength = "10";
             break;
           }
           passLength = prompt("Please choose  between 10 and 64");
         }
+      
         sCharacters = confirm("If you want to include special characters press OK if no press Cancel");
         uCharacters = confirm("If you want to include upperCase characters press 'OK' if no press 'Cancel'");
         nCharacters = confirm("If you want to include numerical characters press 'OK' if no press 'Cancel'");
         lCharacters = confirm("If you want to include lowerCase characters press 'OK' if no press 'Cancel'");
          
         
-  console.log(lCharacters, nCharacters, uCharacters, sCharacters ,passLength);
+  // console.log(lCharacters, nCharacters, uCharacters, sCharacters ,passLength);   // Console log for debugging purpose 
 
 };
 
 
-// Function for getting a random element from an array
-// function getRandom(arr) {
-//  return  Math.floor(Math.random() * lCharacters)
-// }
-
 // Function to generate password with user input
+// This function is takeing 5 arguments and returns back an array. The first argument is `length` and  is a number based on user input.
+//If user press cancel then it will have a default value of 10.
+// The other four arguments are arrays.
+// The `if` statements inside the function is checking if the user input choice for variables is true or false and based on that is creating the array with characters.
+// The loop at the end is selecting random characters from the `charactersArray` and push them one by one in to a new array with random characters which is the result returned  by the function.  
+ 
 function generatePassword(length, numericC, upperC, specialC, lowerC) {
    let charactersArray= [];   
   if (nCharacters){
@@ -141,7 +143,8 @@ function generatePassword(length, numericC, upperC, specialC, lowerC) {
   if (lCharacters){
     charactersArray=charactersArray.concat(lowerC);
   }
-  console.log(charactersArray); //good
+  // console.log(charactersArray); // Console log for debugging purpose 
+ 
   let passCharacters=[];
   for (let i=0 ; i < length; i++){ 
     let character = charactersArray[Math.floor(Math.random() * length)];
@@ -150,7 +153,10 @@ function generatePassword(length, numericC, upperC, specialC, lowerC) {
   }
   return passCharacters;
 }
-console.log(generatePassword(20,numericCharacters,upperCasedCharacters,specialCharacters,lowerCasedCharacters));
+
+// console.log(generatePassword(20,numericCharacters,upperCasedCharacters,specialCharacters,lowerCasedCharacters));   // Console log for debugging purpose 
+
+
 // Get references to the #generate element
 var generateBtn = document.querySelector('#generate');
 
