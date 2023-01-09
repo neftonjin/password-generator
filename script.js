@@ -147,8 +147,8 @@ function generatePassword(length, numericC, upperC, specialC, lowerC) {
  
   let passCharacters=[];
   for (let i=0 ; i < length; i++){ 
-    let character = charactersArray[Math.floor(Math.random() * length)];
-    console.log("testing  " + character);
+    let character = charactersArray[Math.floor(Math.random() * charactersArray.length )];
+    // console.log("testing  " + character);
     passCharacters.push(character);
   }
   return passCharacters;
