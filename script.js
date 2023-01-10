@@ -102,20 +102,20 @@ let nCharacters ;        // This variable is storing the user input  choice as t
 // Function to prompt user for password options
 function getPasswordOptions() {
   const regex = /^(1[0-9]|[2-5][0-9]|6[0-4])$/; //This regular expression is matching all the numbers between 10 an 64 included 
-        passLength = prompt("Please choose  between 10 and 64");
+        passLength = prompt("Please choose a number  between 10 and 64");
         while (passLength !== NaN && regex.test(passLength) !== true) {   
-          if (passLength === null) {
-            passLength = "10";
+          if (passLength === null) {  //This if statement makes sure that if you press cancel then breaks the loop 
             break;
           }
-          passLength = prompt("Please choose  between 10 and 64");
+          passLength = prompt("Please choose a number between 10 and 64");
         }
-      
-        sCharacters = confirm("If you want to include special characters press OK if no press Cancel");
-        uCharacters = confirm("If you want to include upperCase characters press 'OK' if no press 'Cancel'");
-        nCharacters = confirm("If you want to include numerical characters press 'OK' if no press 'Cancel'");
-        lCharacters = confirm("If you want to include lowerCase characters press 'OK' if no press 'Cancel'");
-         
+        console.log(passLength);
+        if (passLength !== null){ // If user press cancel instead of choosing a number then the function of choosing password options will not execute
+            sCharacters = confirm("If you want to include special characters press OK if no press Cancel");
+            uCharacters = confirm("If you want to include upperCase characters press 'OK' if no press 'Cancel'");
+            nCharacters = confirm("If you want to include numerical characters press 'OK' if no press 'Cancel'");
+            lCharacters = confirm("If you want to include lowerCase characters press 'OK' if no press 'Cancel'");
+        }
         
   // console.log(lCharacters, nCharacters, uCharacters, sCharacters ,passLength);   // Console log for debugging purpose 
 
